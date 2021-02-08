@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Minify Images
+    body.body
+        form.form
+            legend.legend Upload your file here
+            label.mb-label(for="mb-label")
+                input.mb-size(type="number", id="mb-size", aria-label="Max size in MBs", required)
+                span.mb-span Max size in MB
+            label.box-label(for="box-label")
+                input.box-size(type="number", id="box-size", aria-label="Max Width and Height", required)
+                span.box-span Max Width and Height
+            button.button(aria-labelledby="#file", type="button") Nothing here yet
+            input.file(accept=".jpg, .jpeg, .png", aria-label="Upload a file here", type="file", name="file", id="file", required, tab-index="0")
+            input.submit(type="submit", value="Minify")

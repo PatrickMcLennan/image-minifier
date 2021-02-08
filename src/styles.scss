@@ -1,0 +1,118 @@
+// - Functions - //
+@function rem($px) {
+    @return ($px / 16)+rem;
+}
+
+// - Mixins - //
+@mixin tablet() {
+    @media screen and (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin mobile() {
+    @media screen and (max-width: 700px) {
+        @content;
+    }
+}
+
+@mixin flex($jc: center, $ai: center, $fd: row, $fw: nowrap) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+    flex-wrap: $fw;
+}
+
+@mixin fontLine($fs, $lh) {
+    font-size: rem($fs);
+    line-height: if($lh, #{rem($lh)}, normal);
+}
+
+// - Resets - // 
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    @include flex(center, center, column);
+    min-height: 100vh;
+    padding: 0 7.5%;
+}
+
+ul,
+ol,
+li {
+    list-style-type: none;
+}
+
+a,
+button,
+input[type="submit"] {
+    &,
+    &:active,
+    &:focus {
+        color: inherit;
+        cursor: pointer;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        text-decoration: none;
+    }
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+.error {
+    & > *:not(.error) {
+        display: none;
+    }
+}
+
+// - Form - //
+.form {
+    @include flex(center, center, column);
+    text-align: left;
+
+    .legend {
+        @include fontLine(24, 32);
+        margin-bottom: rem(15);
+    }
+
+    .file {
+        display: none;
+    }
+
+    .submit {
+        @include fontLine(18, 22);
+        margin-top: rem(15);
+        border: 1px solid black;
+        width: 100%;
+    }
+}
+
+.mb,
+.box {
+    &-label {
+        width: 100%;
+        margin-bottom: rem(15);
+    }
+    &-size {
+        @include fontLine(18, 22);
+        margin-right: 10px;
+    }
+}
+
+.button {
+    @include fontLine(18, 22);
+    display: block;
+    width: 100%;
+    margin-top: rem(15);
+    border: 1px solid black;
+}
